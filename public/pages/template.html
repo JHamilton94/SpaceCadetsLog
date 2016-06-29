@@ -1,0 +1,52 @@
+<html>
+
+
+<head>
+  <link type="text/css" rel="stylesheet" href="/pages/home.css"/>
+  <title>The Space Cadet's Log</title>
+</head>
+
+<div id="wrapper">
+  <body>
+    <div id="heading">
+      <h1>The Space Cadet's Log</h1>
+    </div> 
+
+    <div id="buttons" class="row">
+      <div class="block">
+        <form onsubmit="clicked(this)" method="get" action="/">
+        <button id="homeButton" class="navButton" type="submit">About</button>
+        </form>
+      </div>      
+
+      <div class="block">  
+        <form onsubmit="clicked(this)" method="get" action="/games">
+        <button id="gamesButton" class="navButton" type="submit">Games</button>
+        </form>
+      </div>
+
+      <div class="block">
+        <form onsubmit="clicked(this)" method="get" action="/blog">
+        <button id="blogButton" class="navButton" type="submit">Blog</Button>
+        </form>
+      </div>
+
+      <div class="block">
+        <form onsubmit="clicked(this)" method="get" action="/contact">
+        <button id="contactButton" class="navButton" type="submit">Contact</button>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      var button = document.getElementById("homeButton");
+      button.disabled = true;
+      button.style.backgroundColor = "#4d1a00";
+    </script>
+
+    <div id="content">
+      <p>whatevs</p>
+    </div>
+  </body>
+</div>
+</html>
