@@ -37,6 +37,29 @@ body{
   background-color: rgba(255, 102, 0, 0.5);
 }
 
+#navbar{
+  list-style: none;
+  display: inline;
+  border: 0 solid #555;
+}
+
+li{
+  border-top: solid #4d1a00;
+  border-bottom: solid #4d1a00;
+  float: left;
+  border-width: 0px;
+}
+
+li:last-child{
+  border-right: solid #4d1a00;
+  border-width: 0px;
+}
+
+li:first-child{
+  border-left: solid #4d1a00;
+  border-width: 0px;
+}
+
 .navButton{
   padding: 5px 5px;
   text-decoration: none;
