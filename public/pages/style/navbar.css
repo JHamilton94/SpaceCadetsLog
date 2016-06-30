@@ -1,0 +1,50 @@
+
+*{
+  color: white;
+  font-family: Arial;
+}
+
+html{
+  height: 100%;
+  margin: 0px 0px;
+  border: 0px 0px;
+}
+
+h1{
+  padding: 5px 5px;
+  font-size: 40px;
+}
+
+body{
+  height: 100%;
+  margin: 0;
+  background-image: url(/images/mercury.jpg);
+}
+
+#heading{
+  text-align: center;
+}
+
+#wrapper{
+  height: 100%;
+  margin-left: 5%;
+  margin-right: 5%;
+  padding: 0px 10px;
+  padding-bottom: 0px;
+  border: 0px 0px;
+  background-color: rgba(255, 102, 0, 0.5);
+}
+
+.navButton{
+  font-size: 20px;
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+  float: left;
+}
+
+
+.navbutton:hover{
+  background-color: #4d1a00;
+}
+
+
