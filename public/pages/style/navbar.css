@@ -19,6 +19,8 @@ body{
   height: 100%;
   margin: 0;
   background-image: url(/images/mercury.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 #heading{
@@ -36,10 +38,16 @@ body{
 }
 
 .navButton{
+  padding: 5px 5px;
+  text-decoration: none;
   font-size: 20px;
   background-color: rgba(255, 255, 255, 0);
   border: none;
   float: left;
+}
+
+.active{
+  background-color: #4d1a00;
 }
 
 
