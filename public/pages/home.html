@@ -15,9 +15,14 @@
     
     <ul id="navbar">
       <li><a href="/" class="active navButton">Home</a></li>
-      <li><a href="/blog" class="navButton">Blog</a></li>
+      <li><a href="/blog?page=1" class="navButton">Blog</a></li>
       <li><a href="/games" class="navButton">Games</a></li>   
       <li><a href="/contact" class="navButton">Contact</a></li>
+      <li><form action="/search" method="get" class="search">
+        <input type="text" name="sTerm"<br>
+        <input type="submit" value="Search" class="searchButton">
+      </form></li>
+
     </ul>
         
 

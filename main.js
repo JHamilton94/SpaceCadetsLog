@@ -1,7 +1,10 @@
 var express = require('express');
 var app = express();
 
+//db and post initialization
 var db = require('./mongo.js');
+var post;
+
 
 app.use(express.static('public'));
 
@@ -19,12 +22,12 @@ var server = app.listen(8080, function(){
 app.get('/', function(req, res){
   res.sendFile(__dirname + publicDirectory + pageDirectory + '/home.html');
   console.log("Request for home page");
-  db.insertPost();
 })
 
 app.get('/blog', function(req, res){
   res.sendFile(__dirname + publicDirectory + pageDirectory + '/blog.html');
   console.log("Request for blog page");
+  console.log("Page num: " + req.query.page);
 })
 
 app.get('/games', function(req, res){
