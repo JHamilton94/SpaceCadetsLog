@@ -1,6 +1,8 @@
 var express = require('express');
 var app = express();
 
+var db = require('./mongo.js');
+
 app.use(express.static('public'));
 
 var pageDirectory = '/pages';
@@ -17,6 +19,7 @@ var server = app.listen(8080, function(){
 app.get('/', function(req, res){
   res.sendFile(__dirname + publicDirectory + pageDirectory + '/home.html');
   console.log("Request for home page");
+  db.insertPost();
 })
 
 app.get('/blog', function(req, res){
@@ -37,3 +40,5 @@ app.get('/contact', function(req, res){
 app.get('/image', function(req, res){
   res.sendFile(__dirname + publicDirectory + imageDirectory + '/mercury.jpg');
 })
+
+
