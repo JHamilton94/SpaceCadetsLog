@@ -1,0 +1,27 @@
+html
+  head
+    link(type='text/css', rel='stylesheet', href='/pages/style/home.css')
+    link(type='text/css', rel='stylesheet', href='/pages/style/navbar.css')
+    link(rel='icon', href='/images/icon.png')
+    title The Space Cadet's Log
+  body
+    #wrapper
+      #heading
+        h1 The Space Cadet's Log
+      ul#navbar
+        li
+          a.active.navButton(href='/') Home
+        li
+          a.navButton(href='/blog?page=1') Blog
+        li
+          a.navButton(href='/games') Games
+        li
+          a.navButton(href='/contact') Contact
+        li
+          form.search(action='/search', method='get')
+            input(type='text', name='sTerm', <br='')
+            input.searchButton(type='submit', value='Search')
+      #content
+        h2 About
+        p= message
+        p  I need to put a welcome page here.

@@ -1,0 +1,29 @@
+html
+  head
+    link(type='text/css', rel='stylesheet', href='/pages/style/games.css')
+    link(type='text/css', rel='stylesheet', href='/pages/style/navbar.css')
+    link(rel='icon', href='/images/icon.png')
+    title The Space Cadet's Log
+  body
+    #wrapper
+      #heading
+        h1 The Space Cadet's Log
+      ul#navbar
+        li
+          a.navButton(href='/') Home
+        li
+          a.navButton(href='/blog?page=1') Blog
+        li
+          a.active.navButton(href='/games') Games
+        li
+          a.navButton(href='/contact') Contact
+        li
+          form.search(action='/search', method='get')
+            input(type='text', name='sTerm', <br='')
+            input.searchButton(type='submit', value='Search')
+      #content
+        h2 Games
+        p
+          | Hello, Im just testing out line breaks right now so dont mind me. doo ba beep do do daaa dee do dee doo da baaaaa ooooooooooooo oooooooooh old mcdonal had a farrm sn
+        p
+
