@@ -9,4 +9,68 @@
 
 #content{
   clear: both;
+  margin: 0 0;
 }
+
+#postList{
+  float: top;
+  list-style-type: none;
+  margin: 0px;
+  padding: 0;
+}
+
+.post{
+  display: block;
+  border: 0px 0px white;
+  background-color: rgba(255, 102, 0, 0.5);
+  margin: 10px 0px;
+}
+
+
+
+.postTitle{
+  padding: 5px 5px;
+  text-decoration: none;
+  font-size: 20px;
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+  float: top;
+  display: block;
+}
+
+.postContent{
+  float: top;
+  display: block; 
+}
+
+.postDate{
+  display: block;
+  float: top;
+}
+
+.tagSection{
+  display: inline;
+}
+
+.tag{
+  padding: 5px 5px;
+  text-decoration: none;
+  font-size: 10px;
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+  float: top;
+  display: inline; 
+} 
+
+.postTagsHeader{
+  font-size: 10px;
+}
+
+.tag:hover{
+  background-color: #4d1a00;
+}
+
+.postTitle:hover, .searchButton:hover{
+  background-color: #4d1a00;
+}
+

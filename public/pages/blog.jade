@@ -18,10 +18,23 @@ html
         li
           a.navButton(href='/contact') Contact
         li
-          form.search(action='/search', method='get')
-            input(type='text', name='sTerm', <br='')
+          form.search(action='/blog?page=1', method='get')
+            input(type='hidden', name='page', value=1)
+            input(type='text', name='search')
             input.searchButton(type='submit', value='Search')
       #content
         h2 Blog
+        ul#postList
+          - each post in postContent
+            li.post
+              a.postElement.postTitle(href='/blog?post='+post.date)=post.title
+              p.postElement.postContent=post.content
+              p.postElement.postDate='Posted on: '+post.date 
+              p.postAuthor.postElement='By: '+post.by
+              #tagWrapper
+                p.postTagsHeader.tagSection='Tags: '
+                - each tag in post.tags
+                  a.tagSection.tag(href='/blog?page=1&tag='+tag)=tag
+              
       a#older.navButton(href=olderLink) Older Posts
       a#newer.navButton(href=newerLink) Newer Posts
