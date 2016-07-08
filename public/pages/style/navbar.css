@@ -26,6 +26,7 @@ body{
 }
 
 #wrapper{
+  min-height: 100%;
   display: block;
   overflow: auto;
   margin-left: 5%;
@@ -89,4 +90,10 @@ input[type=text]{
   background-color: #4d1a00;
 }
 
+#older{
+  margin-bottom: 40px;
+}
 
+#newer{
+  margin-top: 40px;
+}

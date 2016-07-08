@@ -21,7 +21,6 @@
 
 .post{
   display: block;
-  border: 0px 0px white;
   background-color: rgba(255, 102, 0, 0.5);
   margin: 10px 0px;
 }
@@ -29,23 +28,30 @@
 
 
 .postTitle{
-  padding: 5px 5px;
+  padding: 0px 0px;
   text-decoration: none;
   font-size: 20px;
+  border: 0px 0px;
   background-color: rgba(255, 255, 255, 0);
-  border: none;
   float: top;
   display: block;
 }
 
 .postContent{
-  float: top;
+  padding: 0px;
+  margin: 5px 0px;
   display: block; 
 }
 
 .postDate{
-  display: block;
-  float: top;
+  font-size: 10px;
+  padding-right: 5px;
+  display: inline;
+}
+
+.postAuthor{
+  font-size: 10px;
+  display: inline;
 }
 
 .tagSection{
@@ -53,11 +59,10 @@
 }
 
 .tag{
-  padding: 5px 5px;
+  padding: 0px 2px;
   text-decoration: none;
   font-size: 10px;
   background-color: rgba(255, 255, 255, 0);
-  border: none;
   float: top;
   display: inline; 
 } 
