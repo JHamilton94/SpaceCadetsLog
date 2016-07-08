@@ -18,8 +18,11 @@ html
         li
           a.navButton(href='/contact') Contact
         li
-          form.search(action='/search', method='get')
-            input(type='text', name='sTerm', <br='')
+          a.navButton(href='/archive') Archive
+        li
+          form.search(action='/blog?page=1', method='get')
+            input(type='hidden', name='page', value=1)
+            input(type='text', name='search')
             input.searchButton(type='submit', value='Search')
       #content
         h2 Games
