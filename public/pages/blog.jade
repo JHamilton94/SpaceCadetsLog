@@ -35,6 +35,8 @@ html
                 p.postTagsHeader.tagSection='Tags: '
                 - each tag in post.tags
                   a.tagSection.tag(href='/blog?page=1&tag='+tag)=tag
-              
-      a#older.navButton(href=olderLink) Older Posts
-      a#newer.navButton(href=newerLink) Newer Posts
+      
+      - if(page != 10 && postContent.length == 10)        
+        a#older.navButton(href=olderLink) Older Posts
+      - if(page != '1')
+        a#newer.navButton(href=newerLink) Newer Posts

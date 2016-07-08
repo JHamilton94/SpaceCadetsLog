@@ -29,11 +29,17 @@ app.get('/', function(req, res){
 })
 
 app.get('/blog', function(req, res){
+  var maxResultsPerPage = 10;
   //page
   if(req.query.page != null){
     //Determine page
     console.log("Queried for page: " + req.query.page);
     currentBlogPage = parseInt(req.query.page);
+    if(currentBlogPage < 1){
+       res.render(__dirname + publicDirectory + pageDirectory + '/404.jade');
+       console.log("ERROR: Tried to access page less than 1");
+       return;
+    }
     var olderPage = currentBlogPage + 1;
     var newerPage = currentBlogPage - 1;
     
@@ -41,10 +47,14 @@ app.get('/blog', function(req, res){
     if(req.query.tag != null){
          mongoClient.connect(url, function(err, db){
          var cursor = db.collection('posts').find({'tags': req.query.tag}).limit(100).toArray(function(err, results){ 
-           
-           
+           truncatedResults = [];
+           var upperBound = currentBlogPage*10;
+           var lowerBound = upperBound-9;
+           for(var i = 0; i < maxResultsPerPage; i++){
+             truncatedResults[i] = results[lowerBound+i-1];
+           }
            res.render(__dirname + publicDirectory + pageDirectory + '/blog.jade', {olderLink: "/blog?page=" 
-             + olderPage + "&tag=" + req.query.tag, newerLink: "/blog?page=" + newerPage + "&tag=" + req.query.tag, postContent: results});
+             + olderPage + "&tag=" + req.query.tag, newerLink: "/blog?page=" + newerPage + "&tag=" + req.query.tag, postContent: truncatedResults, page: currentBlogPage});
            console.log("Request for blog page: " + currentBlogPage + " tag: " + req.query.tag);
          });
        });
@@ -53,8 +63,14 @@ app.get('/blog', function(req, res){
        searchTerm = '\.*'+req.query.search+'\.';
        mongoClient.connect(url, function(err, db){
          var cursor = db.collection('posts').find({'content': new RegExp(searchTerm, 'i')}).limit(100).toArray(function(err, results){ 
+           truncatedResults = [];
+           var upperBound = currentBlogPage*10;
+           var lowerBound = upperBound-9;
+           for(var i = 0; i < maxResultsPerPage; i++){
+             truncatedResults[i] = results[lowerBound+i-1];
+           }
            res.render(__dirname + publicDirectory + pageDirectory + '/blog.jade', {olderLink: "/blog?page=" 
-             + olderPage + "&search=" + req.query.search, newerLink: "/blog?page=" + newerPage + "&search=" + req.query.search, postContent: results});
+             + olderPage + "&search=" + req.query.search, newerLink: "/blog?page=" + newerPage + "&search=" + req.query.search, postContent: results, page: currentBlogPage});
            console.log("Request for blog page: " + currentBlogPage + " search: " + req.query.search);
          });
        });
@@ -62,7 +78,16 @@ app.get('/blog', function(req, res){
     }else{
       mongoClient.connect(url, function(err, db){
         var cursor = db.collection('posts').find().limit(100).toArray(function(err, results){
-          res.render(__dirname + publicDirectory + pageDirectory + '/blog.jade', {olderLink: "/blog?page=" + olderPage, newerLink: "/blog?page=" + newerPage, postContent: results});
+          truncatedResults = [];
+           var upperBound = currentBlogPage*10;
+           var lowerBound = upperBound-9;
+           for(var i = 0; i < maxResultsPerPage; i++){
+             if(results[lowerBound+i-1] == null){
+               break;
+             }
+             truncatedResults[i] = results[lowerBound+i-1];
+           }
+          res.render(__dirname + publicDirectory + pageDirectory + '/blog.jade', {olderLink: "/blog?page=" + olderPage, newerLink: "/blog?page=" + newerPage, postContent: truncatedResults, page: currentBlogPage});
           console.log("Request for blog page: " + currentBlogPage);
         });
       });
@@ -80,3 +105,6 @@ app.get('/contact', function(req, res){
   console.log("Request for contact page");
 })
 
+app.get('*', function(req, res){
+  res.render(__dirname + publicDirectory + pageDirectory + '/404.jade');
+})
