@@ -24,7 +24,8 @@ var server = app.listen(8080, function(){
 })
 
 app.get('/', function(req, res){
-  res.render(__dirname + publicDirectory + pageDirectory + '/home.jade', {message: "asdf"});
+  
+  res.render(__dirname + publicDirectory + pageDirectory + '/home.jade', {message: ""});
   console.log("Request for home page");
 })
 
@@ -51,6 +52,9 @@ app.get('/blog', function(req, res){
            var upperBound = currentBlogPage*10;
            var lowerBound = upperBound-9;
            for(var i = 0; i < maxResultsPerPage; i++){
+             if(results[lowerBound+i-1] == null){
+               break;
+             }
              truncatedResults[i] = results[lowerBound+i-1];
            }
            res.render(__dirname + publicDirectory + pageDirectory + '/blog.jade', {olderLink: "/blog?page=" 
